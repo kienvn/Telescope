@@ -70,7 +70,7 @@ class PostsItem extends Component {
             <div className="posts-item-date">{moment(post.postedAt).fromNow()}</div>
             <div className="posts-item-comments"><a href={Posts.getPageUrl(post)}>{post.commentCount}&nbsp;comments</a></div>
 
-            {(this.context.currentUser && this.context.currentUser.isAdmin) ?<PostsStats post={post} />:null}
+            {(this.context.currentUser && this.context.currentUser.isAdmin) ? <PostsStats post={post} />:null}
             {this.renderActions()}
           </div>
 
