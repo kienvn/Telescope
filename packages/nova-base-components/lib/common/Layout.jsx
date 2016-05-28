@@ -14,7 +14,6 @@ class Layout extends Component {
 
         <HeadTags />
 
-        <UsersProfileCheck {...this.props} />
 
         <Header {...this.props}/>
       

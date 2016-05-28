@@ -9,8 +9,8 @@ class ThumbnailURL extends Component {
     return <img 
       className="embedly-thumbnail" 
       src={this.props.value} 
-      height={Telescope.settings.get('thumbnailHeight', 125)} 
-      width={Telescope.settings.get('thumbnailWidth', 200)}
+      height={Telescope.settings.get('thumbnailHeight', 64)}
+      width={Telescope.settings.get('thumbnailWidth', 52)}
     />
   }
 

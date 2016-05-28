@@ -4,19 +4,18 @@
 }
 
 .header{
-  @include medium-large{
     @include flex-center;
     justify-content: space-between;
-  }
   padding-top: $vmargin;
   padding-bottom: $vmargin;
 }
 
 .logo{
   @include small{
-    text-align: center;
+    .logo-text{
+        font-size: 1.5rem;
+    }
   }
-  @include medium-large{
     display: flex;
     align-items: baseline;
     .logo-text{
@@ -25,7 +24,6 @@
     .logo-image{
       margin-right: $hmargin;
     }
-  }
   .tagline{
     font-size: 1.35rem;
   }
@@ -33,17 +31,9 @@
 
 .nav{
   @include flex-center;
-  @include small{
-    border-top: 1px solid $medium-grey;
-    margin-top: $vmargin;
-    padding-top: $vmargin;
-    justify-content: space-between;
-  }
-  @include medium-large{
     .nav-user{
       margin-right: $hmargin;
     }
-  }
   .nav-new-post{
     @include small{
 

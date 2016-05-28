@@ -1,12 +1,12 @@
 body{
-  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", sans-serif;
+  font-family: "Arial";
 }
 
 .main, .footer, .header{
   margin-left: auto;
   margin-right: auto;
   padding: 0 $hmargin;
-  max-width: 1200px;
+  max-width: 1024px;
 }
 
 .main{

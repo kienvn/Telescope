@@ -4,20 +4,15 @@
 //////////////////////////////////////////////////////
 
 .posts-list-header{
-  @include medium-large{
     @include flex-center;
     justify-content: space-between;
-  }
   margin-bottom: $vmargin;
 }
 
 .post-lists-header-categories{
   @include small{
-    margin: 0 auto;
-    margin-bottom: $vmargin;
-    text-align: center;
     .btn-group{
-      margin-right: 0;
+      margin-left: 0;
       width: 100%;
     }
     .dropdown-toggle{
@@ -27,16 +22,6 @@
 }
 
 .posts-views{
-  @include small{
-    margin-bottom: $vmargin;
-    .btn-group{
-      margin-right: 0;
-      width: 100%;
-    }
-    .dropdown-toggle{
-      width: 100%;
-    }
-  }
   a.btn{
     @include border;
     // @include border-radius;
@@ -83,12 +68,16 @@
 //////////////////////////////////////////////////////
 
 .posts-item{
-  @include medium-large{
-    @include flex-center;
-  }
+  @include flex-center;
   border-bottom: $border;
   padding: $vmargin 5px;
-  // margin-bottom: 15px;
+
+  @include small{
+    line-height: 80%;
+  }
+  @include medium-large{
+    line-height: 90%;
+  }
   &.posts-sticky{
     background: $light-yellow;
 
@@ -96,26 +85,15 @@
 }
 
 .posts-item-vote{
-  @include small{
-    float: right;    
-  }
-  @include medium-large{
     margin-right: $hmargin;
-  }
 }
 
 .upvote-button{
-  @include border;
-  @include border-radius;
   @include flex-center;
   flex-direction: column;
   justify-content: center;
-  padding: 3px 5px;
+  padding: 0px 0px;
   .icon{
-    text-align: center;
-    display: block;
-  }
-  .vote-count{
     text-align: center;
     display: block;
   }
@@ -127,27 +105,44 @@
     text-decoration: none;
   }
 }
-
+.downvote-button{
+  @include flex-center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 0px;
+  .icon{
+    text-align: center;
+    display: block;
+  }
+  .voted &{
+    color: $light-text;
+  }
+  @include activeHover;
+  &, &:active, &:hover{
+    text-decoration: none;
+  }
+}
+.vote-count{
+  text-align: center;
+  display: block;
+}
 .posts-item-content{
   flex-grow: 1;
 }
 
 .posts-item-title{
+  font-weight: bold;
+  display:inline;
   @include small{
-    margin-right: 40px;
-    font-size: $large-font;
+    font-size: $small-font;
     margin-bottom: $vmargin/2;
   }
   @include medium-large{
-    @include flex-center;
-    font-size: $larger-font;
+
+    font-size: $medium-font;
     margin-bottom: 5px;
   }
   .posts-item-title-link{
-    @include small{
-      display: block;
-      margin-bottom: $vmargin/2;
-    }
     color: $black;
     &, &:active, &:hover{
       text-decoration: none;
@@ -156,31 +151,30 @@
 }
 
 .posts-categories{
-  @include medium-large{
-    margin-left: 5px;
-  }
-  @include flex-center;
+  margin-left: 5px;
+  display:inline;
   a{
-    display: block;
+    display: inline-flex;
     font-size: $small-font;
     @include border;
     @include border-radius;
-    margin-right: 5px;
-    padding: 2px 6px;
+    margin-right: 2px;
+    padding: 0px 2px;
     @include activeHover;
   }
 }
 
 .posts-item-meta{
-  @include medium-large{
-    @include flex-center;
-  }
-  font-size: $small-font;
+  @include flex-center;
+  font-size: $smaller-font;
   .users-avatar{
     margin-right: 5px;
   }
   .users-name, .posts-item-date, .posts-item-comments, .posts-stats, .post-actions{
     margin-right: $hmargin;
+  }
+  .users-name, .posts-item-comments-link, .posts-action-edit{
+    color:#666;
   }
 }
 
@@ -197,7 +191,6 @@
   }
   color: $medium-text;
 }
-
 .posts-stats{
   @include small{
     margin-bottom: $vmargin/2;
@@ -215,7 +208,9 @@
     }
   }
 }
-
+.posts-commenters-comments-count{
+  display:inline;
+}
 .post-actions{
   @include flex-center;
 }
@@ -241,8 +236,8 @@
   margin-right: $hmargin;
   img{
     display: block;
-    height: 50px;
-    width: auto;
+    height: 52px;
+    width: 64px;
   }
 }
 
@@ -260,7 +255,7 @@
 }
 
 .posts-page-body{
-  font-size: $large-font;
+  font-size: $medium-font;
   margin-bottom: $hmargin;
 }
 

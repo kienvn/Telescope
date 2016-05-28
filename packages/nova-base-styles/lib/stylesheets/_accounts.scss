@@ -1,12 +1,16 @@
 .accounts-ui{
+  .fields{
+    display:none;
+  }
   .buttons{
+    display:none;
     a{
-      display:block;
       text-align: center;
       margin-bottom: $vmargin;
     }
   }
   .password-or-service{
+    display:none;
     text-align: center;
     margin-bottom: $vmargin;
   }

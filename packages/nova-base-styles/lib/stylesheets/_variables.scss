@@ -1,13 +1,15 @@
-$hmargin: 10px;
-$vmargin: 15px;
+$hmargin: 5px;
+$vmargin: 5px;
 
-$smaller-font: 0.8rem;
+$smaller-font: 0.75rem;
 $small-font: 0.9rem;
-$medium-font: 1rem;
-$large-font: 1.25rem;
-$larger-font: 1.35rem;
+$medium-font: 0.95rem;
+$mid-font: 1.1rem;
+$large-font: 1.15rem;
+$larger-font: 1.2rem;
 
 $border: 1px solid $light-border;
+$large-border: 3px solid $light-border;
 
 @mixin activeHover{
   &:hover{

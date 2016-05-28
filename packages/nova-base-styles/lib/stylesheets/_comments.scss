@@ -1,13 +1,17 @@
 .posts-comments-thread{
-  border-top: $border;
+  border-top: $large-border;
   margin-top: $vmargin;
   padding-top: $vmargin;
 }
 
 .posts-comments-thread-title{
   margin-bottom: $vmargin;
+  font-size: $mid-font;
 }
 
+.posts-comments-thread-new-title{
+  font-size: $mid-font;
+}
 .comments-list{
   margin-bottom: $vmargin;
 }

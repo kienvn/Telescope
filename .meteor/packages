@@ -16,7 +16,8 @@ nova:categories
 nova:share
 nova:voting
 nova:forms
-nova:embedly
+#nova:embedly
+custom-embed
 nova:api
 nova:rss
 nova:kadira
@@ -31,8 +32,9 @@ nova:email-templates
 
 accounts-password
 accounts-twitter
-# accounts-facebook
+accounts-facebook
 
 ############ Debug Packages ############
 
 nova:debug
+service-configuration

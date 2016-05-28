@@ -21,7 +21,7 @@ class Newsletter extends Component {
 
     const showBanner = 
       !(Meteor.isClient && Cookie.get('showBanner') === "no") &&
-      Users.getSetting(context.currentUser, 'newsletter_showBanner', true) &&
+      Users.getSetting(context.currentUser, 'newsletter_showBanner', false) &&
       !Users.getSetting(context.currentUser, 'newsletter_subscribeToNewsletter', false);
 
     this.state = {

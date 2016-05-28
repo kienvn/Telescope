@@ -26,7 +26,7 @@ const PostsCommentsThread = ({document, currentUser}) => {
       />
       { currentUser ?
         <div className="posts-comments-thread-new">
-          <h4>New Comment:</h4>
+          <div classname = "posts-comments-thread-new-title" >New Comment:</div>
           <CommentsNew type="comment" postId={post._id} />
         </div> :
         <div>
