@@ -8,7 +8,6 @@ class Vote extends Component {
   constructor() {
     super();
     this.upvote = this.upvote.bind(this);
-    this.downvote = this.downvote.bind(this);
   }
 
   upvote(e) {
@@ -31,30 +30,7 @@ class Vote extends Component {
 
   }
 
-  downvote(e) {
-    e.preventDefault();
-
-    const post = this.props.post;
-    const user = this.context.currentUser;
-
-    if(!user){
-      Messages.flash("Please log in first");
-    } else if (user.hasDownvoted(post)) {
-      Actions.call('posts.cancelDownvote', post._id, function(){
-        Events.track("post downvote cancelled", {'_id': post._id});
-        console.log("post downvote cancelled", {'_id': post._id});
-      });
-    } else {
-      Actions.call('posts.downvote', post._id, function(){
-        Events.track("post downvoted", {'_id': post._id});
-        console.log("post downvoted", {'_id': post._id});
-      });
-    }
-
-  }
   render() {
-
-    ({Icon} = Telescope.components);
 
     const post = this.props.post;
     const user = this.context.currentUser;
@@ -71,13 +47,9 @@ class Vote extends Component {
     return (
       <div className={actionsClass}>
         <a className="upvote-button" onClick={this.upvote}>
-          <Icon name="upvote" />
+          <Telescope.components.Icon name="upvote" />
           <div className="sr-only">Upvote</div>
-        </a>
-        <div className="vote-count">{post.baseScore || 0}</div>
-        <a className="downvote-button" onClick={this.downvote}>
-          <Icon name="downvote" />
-          <div className="sr-only">Downvote</div>
+          <div className="vote-count">{post.baseScore || 0}</div>
         </a>
       </div>
     )

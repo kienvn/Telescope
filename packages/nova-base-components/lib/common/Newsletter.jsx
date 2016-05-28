@@ -20,7 +20,7 @@ class Newsletter extends Component {
 
     const showBanner = 
       !(Meteor.isClient && Cookie.get('showBanner') === "no") &&
-      Users.getSetting(context.currentUser, 'newsletter_showBanner', false) &&
+      Users.getSetting(context.currentUser, 'newsletter_showBanner', true) &&
       !Users.getSetting(context.currentUser, 'newsletter_subscribeToNewsletter', false);
 
     this.state = {
@@ -92,14 +92,12 @@ class Newsletter extends Component {
 
     const currentUser = this.context.currentUser;
 
-    ({Icon} = Telescope.components);
-
     if (this.state.showBanner) {
       return (
         <div className="newsletter">
           <h4 className="newsletter-tagline">{this.props.headerText}</h4>
           {this.context.currentUser ? this.renderButton() : this.renderForm()}
-          <a onClick={this.dismissBanner} className="newsletter-close"><Icon name="close"/></a>
+          <a onClick={this.dismissBanner} className="newsletter-close"><Telescope.components.Icon name="close"/></a>
         </div>
       );
     } else {
