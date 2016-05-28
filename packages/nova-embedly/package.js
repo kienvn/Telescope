@@ -1,7 +1,7 @@
 Package.describe({
   name: "nova:embedly",
   summary: "Telescope Embedly module package",
-  version: "0.26.1-nova",
+  version: "0.26.2-nova",
   git: 'https://github.com/TelescopeJS/telescope-embedly.git'
 });
 
@@ -10,9 +10,10 @@ Package.onUse( function(api) {
   api.versionsFrom("METEOR@1.0");
 
   api.use([
-    'nova:core@0.26.1-nova',
-    'nova:posts@0.26.1-nova',
-    'nova:users@0.26.1-nova'
+    'nova:core@0.26.2-nova',
+    'nova:posts@0.26.2-nova',
+    'nova:users@0.26.2-nova',
+    'fourseven:scss@3.4.1'
   ]);
 
   api.addFiles([
@@ -26,12 +27,7 @@ Package.onUse( function(api) {
   ], ['server']);
 
   api.addFiles([
-    // 'lib/client/js/jquery.fitvids.js',
-    // 'lib/client/autoform-postthumbnail.html',
-    // 'lib/client/autoform-postthumbnail.js',
-    // 'lib/client/post_thumbnail.html',
-    // 'lib/client/post_thumbnail.js',
-    // 'lib/client/post_thumbnail.scss'
+    'lib/stylesheets/embedly.scss'
   ], ['client']);
 
   // var languages = ["ar", "bg", "cs", "da", "de", "el", "en", "es", "et", "fr", "hu", "id", "it", "ja", "kk", "ko", "nl", "pl", "pt-BR", "ro", "ru", "sl", "sv", "th", "tr", "vi", "zh-CN"];

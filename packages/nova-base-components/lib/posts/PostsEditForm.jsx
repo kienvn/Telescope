@@ -4,8 +4,7 @@ import NovaForm from "meteor/nova:forms";
 import SmartContainers from "meteor/utilities:react-list-container";
 const DocumentContainer = SmartContainers.DocumentContainer;
 
-import Core from "meteor/nova:core";
-const Messages = Core.Messages;
+import { Messages } from "meteor/nova:core";
 
 import Actions from "../actions.js";
 
@@ -26,12 +25,22 @@ class PostsEditForm extends Component{
     }
   }
 
+  renderAdminArea() {
+    return (
+      <div className="posts-edit-form-admin">
+        <div className="posts-edit-form-id">ID: {this.props.post._id}</div>
+        <Telescope.components.PostsStats post={this.props.post} />
+      </div>
+    )
+  }
+
   render() {
 
     const Icon = Telescope.components.Icon;
     
     return (
       <div className="posts-edit-form">
+        {Users.is.admin(this.context.currentUser) ?  this.renderAdminArea() : null}
         <DocumentContainer 
           collection={Posts} 
           publication="posts.single" 

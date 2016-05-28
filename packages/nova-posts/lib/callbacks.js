@@ -237,7 +237,7 @@ function PostsNewNotifications (post) {
   if (typeof Telescope.notifications !== "undefined") {
 
     var adminIds = _.pluck(Users.adminUsers({fields: {_id:1}}), '_id');
-    var notifiedUserIds = _.pluck(Users.find({'telescope.notifications.posts': true}, {fields: {_id:1}}).fetch(), '_id');
+    var notifiedUserIds = _.pluck(Users.find({'telescope.notifications_posts': true}, {fields: {_id:1}}).fetch(), '_id');
     var notificationData = {
       post: _.pick(post, '_id', 'userId', 'title', 'url')
     };
@@ -248,10 +248,10 @@ function PostsNewNotifications (post) {
 
     if (post.status === Posts.config.STATUS_PENDING && !!adminIds.length) {
       // if post is pending, only notify admins
-      Telescope.createNotification(adminIds, 'newPendingPost', notificationData);
+      Telescope.notifications.create(adminIds, 'newPendingPost', notificationData);
     } else if (!!notifiedUserIds.length) {
       // if post is approved, notify everybody
-      Telescope.createNotification(notifiedUserIds, 'newPost', notificationData);
+      Telescope.notifications.create(notifiedUserIds, 'newPost', notificationData);
     }
   }
 }
@@ -295,7 +295,9 @@ Telescope.callbacks.add("posts.edit.method", PostsEditSubmittedPropertiesCheck);
  */
 function PostsEditForceStickyToFalse (modifier, post) {
   if (!modifier.$set.sticky) {
-    delete modifier.$unset.sticky;
+    if (modifier.$unset && modifier.$unset.sticky) {
+      delete modifier.$unset.sticky;
+    }
     modifier.$set.sticky = false;
   }
   return modifier;
@@ -336,7 +338,7 @@ function PostsApprovedNotification (post) {
       post: _.pick(post, '_id', 'userId', 'title', 'url')
     };
 
-    Telescope.createNotification(post.userId, 'postApproved', notificationData);
+    Telescope.notifications.create(post.userId, 'postApproved', notificationData);
   }
 }
 Telescope.callbacks.add("posts.approve.async", PostsApprovedNotification);

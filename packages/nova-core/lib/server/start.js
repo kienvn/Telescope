@@ -1,3 +1,5 @@
+import {Inject} from 'meteor/meteorhacks:inject-initial';
+
 Meteor.startup(function () {
   Events.log({
     name: "firstRun",
@@ -15,3 +17,5 @@ Meteor.startup(function() {
     SyncedCron.start();
   }
 });
+
+Inject.obj('serverTimezoneOffset', {offset: new Date().getTimezoneOffset()});

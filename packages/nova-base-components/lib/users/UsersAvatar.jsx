@@ -1,4 +1,6 @@
 import React, { PropTypes, Component } from 'react';
+// import Avatar from 'meteor-avatar-core';
+import { Avatar } from 'meteor/nova:core';
 
 const UsersAvatar = ({user, size, link}) => {
 
@@ -22,9 +24,14 @@ const UsersAvatar = ({user, size, link}) => {
     width: sizes[size]
   }; 
 
-  const img = <img alt={Users.getDisplayName(user)} style={imgStyle} className="avatar" src={Avatar.getUrl(user)}/>;
+  const avatarUrl = Avatar.getUrl(user);
 
-  return link ? <a style={aStyle} className="users-avatar" href={Users.getProfileUrl(user)}>{img}</a> : img;
+  const img = <img alt={Users.getDisplayName(user)} style={imgStyle} className="avatar" src={Avatar.getUrl(user)}/>;
+  const initials = <span className="avatar-initials"><span>{Avatar.getInitials(user)}</span></span>;
+
+  const avatar = avatarUrl ? img : initials;
+
+  return link ? <a style={aStyle} className="users-avatar" href={Users.getProfileUrl(user)}>{avatar}</a> : avatar;
 
 }
 

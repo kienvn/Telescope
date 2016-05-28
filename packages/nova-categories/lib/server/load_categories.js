@@ -3,8 +3,11 @@
 if (Meteor.settings && Meteor.settings.categories) {
   Meteor.settings.categories.forEach(category => {
 
+    // get slug (or slugified name)
+    const slug = category.slug || Telescope.utils.slugify(category.name);
+
     // look for existing category with same slug
-    let existingCategory = Categories.findOne({slug: category.slug});
+    let existingCategory = Categories.findOne({slug: slug});
 
     if (existingCategory) {
       // if category exists, update it with settings data except slug

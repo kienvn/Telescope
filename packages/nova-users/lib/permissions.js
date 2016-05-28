@@ -126,6 +126,8 @@ Users.can.edit = function (user, document) {
     return false;
   }
 
+  if (document.hasOwnProperty('isDeleted') && document.isDeleted) return false;
+
   var adminCheck = Users.is.admin(user);
   var ownerCheck = Users.is.owner(user, document) && Date.now() - document.postedAt < 2*60*60*1000;
 
